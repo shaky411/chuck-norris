@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/c835f09f38.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Nunito:wght@300;400&family=Outfit:wght@200;300;400&family=Oxygen:wght@300;400&family=Phudu&family=Roboto:wght@300;400&display=swap"
         rel="stylesheet">
@@ -31,7 +32,7 @@
                     class="bg-slate-500 hover:bg-slate-900 duration-300 py-2 px-4 text-slate-100 rounded-full mt-2 shadow"><i
                         class="fa-solid fa-circle-plus mr-1"></i>New Joke</button>
                 <button id="favorites"
-                    class="hidden bg-slate-500 hover:bg-slate-900 duration-300 py-2 px-4 text-slate-100 rounded-full mt-2 shadow">Favorites</button>
+                    class="bg-slate-500 hover:bg-slate-900 duration-300 py-2 px-4 text-slate-100 rounded-full mt-2 shadow">Favorites</button>
                 <div id="joke" class="mt-6">
                     <h2 id="joke-container"
                         class="hidden border border-slate-300 font-space text-slate-700 text-xl bg-white py-2 px-4 rounded shadow-inner">
@@ -45,10 +46,10 @@
 
                     <!-- Favorites Section -->
                     <div id="favorites-container" class="hidden">
-                        <ul>
-                            <li
-                                class="mb-3 border border-slate-300 font-space text-slate-700 text-xl bg-white py-2 px-4 rounded shadow-inner">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, facere.</li>
+                        <ul id="fav-list" class="font-space remove-item">
+                            <!-- <li
+                                id="favJokeNew" class="mb-3 border border-slate-300 font-space text-slate-700 text-xl bg-white py-2 px-4 rounded shadow-inner">
+                                </li>
                             <li
                                 class="mb-3 border border-slate-300 font-space text-slate-700 text-xl bg-white py-2 px-4 rounded shadow-inner">
                                 Lorem ipsum dolor sit amet consectetur.</li>
@@ -58,7 +59,7 @@
                                 fuga totam porro, nihil doloremque ut.</li>
                             <li
                                 class="mb-3 border border-slate-300 font-space text-slate-700 text-xl bg-white py-2 px-4 rounded shadow-inner">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li> -->
                         </ul>
                         <div class="flex justify-between">
                             <button id="close" class="text-blue-500 hover:text-blue-800">Close</button>

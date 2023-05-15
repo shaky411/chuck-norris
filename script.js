@@ -6,27 +6,58 @@ const favBtn = document.getElementById('favorites');
 const favorites = document.getElementById('favorites-container');
 const close = document.getElementById('close');
 const deleteFav = document.getElementById('delete-all');
+const favList = document.getElementById('fav-list');
 
 const localStorageJokes = JSON.parse(localStorage.getItem('jokes'));
 
+// When the like button is clicked run this code
+function likeJoke(event) {
+    event.preventDefault();
 
-let jokes = 
-localStorage.getItem('jokes') !== null ? 
-localStorageJokes : [];
+    const marc = {
+        id: generateID(),
+        text: joke.innerHTML
+    }
 
-function updateLocalStorage() {
-    localStorage.setItem('jokes', JSON.stringify(jokes));
-}
+    jokes.push(marc);
+    addJokeDOM(marc);
+    updateLocalStorage();
 
-function likeJoke() {
-    jokes.push(joke.innerHTML);
-    updateLocalStorage()
+    // const favEl = document.createElement('li');
+    
+    // favEl.innerHTML = marc.jokey
+    // console.log(favEl);
+    // favList.appendChild(favEl);
+    
 }
 
 function generateID () {
     return Math.floor(Math.random() * 100000000);
 }
 
+let jokes = 
+localStorage.getItem('jokes') !== null ? 
+localStorageJokes : [];
+console.log(jokes)
+
+function addJokeDOM(marc) {
+    const favEl = document.createElement('li');
+    favEl.innerHTML = `${marc.text} <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button>`
+
+    favList.appendChild(favEl);
+}
+
+function deleteFavJoke(id) {
+    jokes = jokes.filter(marc => marc.id
+        !== id);
+
+        
+        updateLocalStorage();
+       
+  }
+
+
+// Fetches joke when new joke button is clicked
 async function logJSONData() {
     const response = await fetch("https://api.chucknorris.io/jokes/random");
     const jsonData = await response.json();
@@ -42,6 +73,7 @@ async function logJSONData() {
     
   };
 
+//   clears the currently displayed joke
   function clearData() {
     joke.innerHTML = ''
     joke.classList.add('hidden');
@@ -49,6 +81,11 @@ async function logJSONData() {
     like.classList.add('hidden');
   }
 
+  function getFavJoke() {
+    
+  }
+
+// show favourites section
   function showFav() {
     favorites.classList.remove('hidden');
     joke.classList.add('hidden');
@@ -56,30 +93,24 @@ async function logJSONData() {
     like.classList.add('hidden');
   }
 
+//  hide favourites section
   function hideFav() {
     favorites.classList.add('hidden');
   }
 
-  function deleteFavJoke() {
-    localStorage.clear()
-    favorites.classList.add('hidden');
-  }
+  function updateLocalStorage() {
+    localStorage.setItem('jokes', JSON.stringify(jokes));
+}
+  
+function init() {
+    jokes.forEach(addJokeDOM);
+}
 
+init()
 
   jokeBtn.addEventListener('click', logJSONData);
   clear.addEventListener('click', clearData);
   favBtn.addEventListener('click', showFav);
   close.addEventListener('click', hideFav);
   like.addEventListener('click', likeJoke);
-  deleteFav.addEventListener('click', deleteFavJoke);
-
-  
-
-
-
-  function removeTransaction(id) {
-    transactions = transactions.filter(transaction => transaction.id
-        !== id);
-
-        updateLocalStorage();
-}
+//   deleteFav.addEventListener('click', deleteFavJoke);
