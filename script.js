@@ -8,6 +8,17 @@ const close = document.getElementById('close');
 const deleteFav = document.getElementById('delete-all');
 const favList = document.getElementById('fav-list');
 
+
+
+    function handleClick(event) {
+        if (event.target.classList.contains("delete")) {
+            event.preventDefault();
+            removeItem(event.target);
+        }
+    }
+
+    
+
 const localStorageJokes = JSON.parse(localStorage.getItem('jokes'));
 
 // When the like button is clicked run this code
@@ -42,6 +53,7 @@ console.log(jokes)
 
 function addJokeDOM(marc) {
     const favEl = document.createElement('li');
+    favEl.classList.add("delete");
     favEl.innerHTML = `${marc.text} <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button>`
 
     favList.appendChild(favEl);
@@ -50,7 +62,10 @@ function addJokeDOM(marc) {
 function deleteFavJoke(id) {
     jokes = jokes.filter(marc => marc.id
         !== id);
+const ul = document.querySelector('ul');
+const li = document.querySelector('li:first-child');
 
+ul.removeChild(li);
         
         updateLocalStorage();
        
@@ -113,4 +128,4 @@ init()
   favBtn.addEventListener('click', showFav);
   close.addEventListener('click', hideFav);
   like.addEventListener('click', likeJoke);
-//   deleteFav.addEventListener('click', deleteFavJoke);
+  deleteFav.addEventListener('click', deleteFavJoke);
