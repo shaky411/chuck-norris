@@ -29,6 +29,7 @@ function likeJoke(event) {
 
 function copyJoke() {
     navigator.clipboard.writeText(joke.innerHTML);
+    alert('Joke copied to clipboard');
 }
 
 // Generate random ID
