@@ -14,3 +14,7 @@ li {
     color: #F1596A;
     margin: 15px;
 }
+
+.fa-trash-can:hover {
+    color: #a1303d;
+}
