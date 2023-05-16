@@ -18,3 +18,9 @@ li {
 .fa-trash-can:hover {
     color: #a1303d;
 }
+
+#btn-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

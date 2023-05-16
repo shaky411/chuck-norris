@@ -6,9 +6,8 @@ const copy = document.getElementById("copy");
 const favBtn = document.getElementById("favorites");
 const favorites = document.getElementById("favorites-container");
 const close = document.getElementById("close");
-const deleteFav = document.getElementById("delete-all");
 const favList = document.getElementById("fav-list");
-const items = document.getElementById("item-list");
+
 
 const localStorageJokes = JSON.parse(localStorage.getItem("jokes"));
 
@@ -43,7 +42,7 @@ function addJokeDOM(marc) {
   const favEl = document.createElement("li");
   favEl.id = `joke-${marc.id}`;
 
-  favEl.innerHTML = `${marc.text} <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button>`;
+  favEl.innerHTML = `${marc.text} <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button></div>`;
 
   favList.appendChild(favEl);
 }
@@ -59,13 +58,7 @@ function deleteFavJoke(id) {
   }
 
   updateLocalStorage();
-//   const ul = document.querySelector("ul");
-//   const li = document.querySelector(`li`);
-
-//   ul.removeChild(li);
-
-  
-}
+};
 
 // Fetches joke when new joke button is clicked
 async function logJSONData() {
@@ -91,8 +84,6 @@ function clearData() {
   copy.classList.add("hidden");
 }
 
-function getFavJoke() {}
-
 // show favourites section
 function showFav() {
   favorites.classList.remove("hidden");
@@ -117,6 +108,8 @@ function init() {
 
 init();
 
+
+// Event Listeners
 jokeBtn.addEventListener("click", logJSONData);
 clear.addEventListener("click", clearData);
 favBtn.addEventListener("click", showFav);
