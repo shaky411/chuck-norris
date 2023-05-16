@@ -2,6 +2,7 @@ const jokeBtn = document.getElementById('joke-btn');
 const joke = document.getElementById('joke-container');
 const clear = document.getElementById('clear');
 const like = document.getElementById('like');
+const copy = document.getElementById('copy');
 const favBtn = document.getElementById('favorites');
 const favorites = document.getElementById('favorites-container');
 const close = document.getElementById('close');
@@ -24,6 +25,10 @@ function likeJoke(event) {
     addJokeDOM(marc);
     updateLocalStorage();
     
+}
+
+function copyJoke() {
+    navigator.clipboard.writeText(joke.innerHTML);
 }
 
 // Generate random ID
@@ -69,6 +74,7 @@ async function logJSONData() {
     joke.classList.remove('hidden');
     clear.classList.remove('hidden');
     like.classList.remove('hidden');
+    copy.classList.remove('hidden');
     favorites.classList.add('hidden');
 
     joke.innerHTML = jsonData.value
@@ -81,6 +87,7 @@ async function logJSONData() {
     joke.classList.add('hidden');
     clear.classList.add('hidden');
     like.classList.add('hidden');
+    copy.classList.add('hidden');
   }
 
   function getFavJoke() {
@@ -93,6 +100,7 @@ async function logJSONData() {
     joke.classList.add('hidden');
     clear.classList.add('hidden');
     like.classList.add('hidden');
+    copy.classList.add('hidden');
   }
 
 //  hide favourites section
@@ -115,3 +123,4 @@ init()
   favBtn.addEventListener('click', showFav);
   close.addEventListener('click', hideFav);
   like.addEventListener('click', likeJoke);
+  copy.addEventListener('click', copyJoke);
