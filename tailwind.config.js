@@ -12,7 +12,8 @@ module.exports = {
         cinzel: ["Cinzel Decorative", "cursive"],
         roboto: ["Roboto", "sans-serif"],
         space: ["Space Mono", "monospace"],
-        bebas: ["Bebas Neue", "sans-serif"]
+        bebas: ["Bebas Neue", "sans-serif"],
+        ysabeau: ["Ysabeau", "sans-serif"],
       },
     },
   },

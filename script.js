@@ -41,6 +41,7 @@ console.log(jokes);
 function addJokeDOM(marc) {
   const favEl = document.createElement("li");
   favEl.id = `joke-${marc.id}`;
+  console.log(favEl.id);
 
   favEl.innerHTML = `${marc.text} <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button></div>`;
 
@@ -57,7 +58,7 @@ function deleteFavJoke(id) {
     favEl.remove();
   }
 
-  updateLocalStorage();
+  updateLocalStorage(); 
 };
 
 // Fetches joke when new joke button is clicked
