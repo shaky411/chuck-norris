@@ -46,7 +46,7 @@ function addJokeDOM(marc) {
   favEl.id = `joke-${marc.id}`;
   console.log(favEl.id);
 
-  favEl.innerHTML = `${marc.text} <div id="btn-div"> <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button> <button id="copy-fav" onClick="copyJoke()"><i class="fa-solid fa-clipboard"></i></button> </div>`;
+  favEl.innerHTML = `${marc.text} <div id="btn-div"> <button id="copy-fav" onClick="copyJoke()"><i class="fa-solid fa-clipboard"></i></button> <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button> </div>`;
 
   favList.appendChild(favEl);
 }
