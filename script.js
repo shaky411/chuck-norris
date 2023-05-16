@@ -7,6 +7,7 @@ const favBtn = document.getElementById("favorites");
 const favorites = document.getElementById("favorites-container");
 const close = document.getElementById("close");
 const favList = document.getElementById("fav-list");
+const copyFav = document.getElementById('copy-fav');
 
 
 const localStorageJokes = JSON.parse(localStorage.getItem("jokes"));
@@ -25,6 +26,7 @@ function likeJoke(event) {
   updateLocalStorage();
 }
 
+// Copy item to clipboard
 function copyJoke() {
   navigator.clipboard.writeText(joke.innerHTML);
   alert("Joke copied to clipboard");
@@ -38,18 +40,19 @@ function generateID() {
 let jokes = localStorage.getItem("jokes") !== null ? localStorageJokes : [];
 console.log(jokes);
 
+// Add item to favourites list
 function addJokeDOM(marc) {
   const favEl = document.createElement("li");
   favEl.id = `joke-${marc.id}`;
   console.log(favEl.id);
 
-  favEl.innerHTML = `${marc.text} <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button></div>`;
+  favEl.innerHTML = `${marc.text} <div id="btn-div"> <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button> <button id="copy-fav" onClick="copyJoke()"><i class="fa-solid fa-clipboard"></i></button> </div>`;
 
   favList.appendChild(favEl);
 }
 
+// Delete item from favourites list
 function deleteFavJoke(id) {
-
   jokes = jokes.filter((marc) => marc.id !== id);
   console.log(jokes);
 
@@ -57,7 +60,6 @@ function deleteFavJoke(id) {
   if (favEl) {
     favEl.remove();
   }
-
   updateLocalStorage(); 
 };
 
@@ -110,7 +112,7 @@ function init() {
 init();
 
 
-// Event Listeners
+// Button Event Listeners
 jokeBtn.addEventListener("click", logJSONData);
 clear.addEventListener("click", clearData);
 favBtn.addEventListener("click", showFav);

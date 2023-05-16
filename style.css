@@ -12,7 +12,7 @@ li {
 
 .fa-trash-can {
     color: #F1596A;
-    margin: 15px;
+    margin: 10px 10px 10px 15px;
 }
 
 .fa-trash-can:hover {
@@ -23,4 +23,12 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#copy-fav {
+    color: #64748B;
+}
+
+#copy-fav:hover {
+    color: #2d3035;
 }
