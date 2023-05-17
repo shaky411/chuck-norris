@@ -26,12 +26,6 @@ function likeJoke(event) {
   updateLocalStorage();
 }
 
-// Copy item to clipboard
-function copyJoke() {
-  navigator.clipboard.writeText(joke.innerHTML);
-  alert("Joke copied to clipboard");
-}
-
 // Generate random ID
 function generateID() {
   return Math.floor(Math.random() * 100000000);
@@ -52,13 +46,20 @@ function addJokeDOM(marc) {
   favList.appendChild(favEl);
 }
 
+// Copy item to clipboard
+function copyJoke() {
+  navigator.clipboard.writeText(joke.innerHTML);
+  alert("Joke copied to clipboard");
+}
+
+// Copy favourite item to clipboard
 function copyFavJoke(id) {
   jokes = jokes.filter((marc) => marc.id !== id);
 
   const favJoke = document.getElementById(`joke-${id}`);
-  console.log(favJoke)
+  // console.log(favJoke.innerText.trim())
 
-  navigator.clipboard.writeText(favJoke.innerText);
+  navigator.clipboard.writeText(favJoke.innerText.trim());
   alert("Joke copied to clipboard");
 }
 
@@ -66,7 +67,7 @@ function copyFavJoke(id) {
 // Delete item from favourites list
 function deleteFavJoke(id) {
   jokes = jokes.filter((marc) => marc.id !== id);
-  console.log(jokes);
+  // console.log(jokes);
 
   const favEl = document.getElementById(`joke-${id}`);
   if (favEl) {
