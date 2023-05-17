@@ -58,7 +58,7 @@ function copyFavJoke(id) {
   const favJoke = document.getElementById(`joke-${id}`);
   console.log(favJoke)
 
-  navigator.clipboard.writeText(favJoke.innerHTML);
+  navigator.clipboard.writeText(favJoke.innerText);
   alert("Joke copied to clipboard");
 }
 
