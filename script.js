@@ -46,10 +46,22 @@ function addJokeDOM(marc) {
   favEl.id = `joke-${marc.id}`;
   console.log(favEl.id);
 
-  favEl.innerHTML = `${marc.text} <div id="btn-div"> <button id="copy-fav" onClick="copyJoke()"><i class="fa-solid fa-clipboard"></i></button> <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button> </div>`;
+  favEl.innerHTML = `${marc.text} <div id="btn-div"> <button id="copy-fav" onClick="copyFavJoke(${marc.id})"><i class="fa-solid fa-clipboard"></i></button> <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button> </div>`;
+
 
   favList.appendChild(favEl);
 }
+
+function copyFavJoke(id) {
+  jokes = jokes.filter((marc) => marc.id !== id);
+
+  const favJoke = document.getElementById(`joke-${id}`);
+  console.log(favJoke)
+
+  navigator.clipboard.writeText(favJoke.innerHTML);
+  alert("Joke copied to clipboard");
+}
+
 
 // Delete item from favourites list
 function deleteFavJoke(id) {
