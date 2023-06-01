@@ -42,14 +42,14 @@ function addJokeDOM(marc) {
 
   favEl.innerHTML = `${marc.text} <div id="btn-div"> <button id="copy-fav" onClick="copyFavJoke(${marc.id})"><i class="fa-solid fa-clipboard"></i></button> <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button> </div>`;
 
-
   favList.appendChild(favEl);
+  
 }
 
 // Copy item to clipboard
 function copyJoke() {
   navigator.clipboard.writeText(joke.innerHTML);
-  alert("Joke copied to clipboard");
+  openModal();
 }
 
 // Copy favourite item to clipboard
@@ -60,7 +60,7 @@ function copyFavJoke(id) {
   // console.log(favJoke.innerText.trim())
 
   navigator.clipboard.writeText(favJoke.innerText.trim());
-  alert("Joke copied to clipboard");
+  openModal();
 }
 
 
@@ -132,3 +132,38 @@ favBtn.addEventListener("click", showFav);
 close.addEventListener("click", hideFav);
 like.addEventListener("click", likeJoke);
 copy.addEventListener("click", copyJoke);
+
+
+const modal = document.querySelector('.main-modal');
+const closeButton = document.querySelectorAll('.modal-close');
+
+    function modalClose() {
+        modal.classList.remove('fadeIn');
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 500);
+    }
+
+    function openModal() {
+        modal.classList.remove('fadeOut');
+        modal.classList.add('fadeIn');
+        modal.style.display = 'flex';
+    }
+
+    for (let i = 0; i < closeButton.length; i++) {
+
+        const elements = closeButton[i];
+
+        elements.onclick = (e) => modalClose();
+
+        modal.style.display = 'none';
+
+        window.onclick = function (event) {
+            if (event.target == modal) modalClose();
+        }
+    }
+
+    const openBtn = document.getElementById('open-modal');
+
+    openBtn.addEventListener('click', openModal);

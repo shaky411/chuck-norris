@@ -20,7 +20,36 @@
 </head>
 
 <body>
+
+    
+
+    <div class="main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
+        style="background: rgba(0,0,0,.7);">
+        <div class="border shadow-lg modal-container bg-white w-11/12 max-w-md mx-auto rounded-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <!--Title-->
+                <div class="flex justify-start items-center">
+                    <div class="flex items-center justify-center bg-slate-200 w-10 h-10 p-2 rounded-full">
+                        <i class="fa-solid fa-clipboard text-rose-400"></i>
+                    </div>
+                    <p class="text-lg font-semibold ml-2">Copied!</p>
+                </div>
+                <!--Body-->
+                <div class="my-5">
+                    <p class="text-slate-500">Joke copied to clipboard.</p>
+                </div>
+                <!--Footer-->
+                <div class="flex justify-end pt-2">
+                    <button
+                        class="focus:outline-none modal-close px-4 bg-slate-300 py-1 rounded-md text-slate-800 hover:bg-slate-800 hover:text-slate-200 duration-500">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
     <div class="flex flex-col justify-center items-center min-h-screen bg-slate-100">
+
         <div
             class="flex flex-col max-w-[600px] mx-10 mt-20 mb-10 justify-center items-center bg-slate-200 border border-slate-300 shadow-lg rounded-lg">
             <div
@@ -57,9 +86,10 @@
                     <div id="favorites-container" class="hidden">
                         <ul id="fav-list" class="font-space remove-item">
                             <!-- <li
-                                id="favJokeNew" class="mb-3 border border-slate-300 font-space text-slate-700 text-xl bg-white py-2 px-4 rounded shadow-inner">
-                                </li>
-                            <li
+                                id="fav-message" class="mb-3 border border-slate-300 font-space text-slate-700 text-xl bg-white py-2 px-4 rounded shadow-inner">
+                                Hit the like icon to add favourites here...
+                                </li> -->
+                            <!-- <li
                                 class="mb-3 border border-slate-300 font-space text-slate-700 text-xl bg-white py-2 px-4 rounded shadow-inner">
                                 Lorem ipsum dolor sit amet consectetur.</li>
                             <li
