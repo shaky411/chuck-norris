@@ -7,8 +7,7 @@ const favBtn = document.getElementById("favorites");
 const favorites = document.getElementById("favorites-container");
 const close = document.getElementById("close");
 const favList = document.getElementById("fav-list");
-const copyFav = document.getElementById('copy-fav');
-
+const copyFav = document.getElementById("copy-fav");
 
 const localStorageJokes = JSON.parse(localStorage.getItem("jokes"));
 
@@ -43,7 +42,6 @@ function addJokeDOM(marc) {
   favEl.innerHTML = `${marc.text} <div id="btn-div"> <button id="copy-fav" onClick="copyFavJoke(${marc.id})"><i class="fa-solid fa-clipboard"></i></button> <button class="delete-btn" onClick="deleteFavJoke(${marc.id})"><i class="fa-solid fa-trash-can"></i></button> </div>`;
 
   favList.appendChild(favEl);
-  
 }
 
 // Copy item to clipboard
@@ -63,7 +61,6 @@ function copyFavJoke(id) {
   openModal();
 }
 
-
 // Delete item from favourites list
 function deleteFavJoke(id) {
   jokes = jokes.filter((marc) => marc.id !== id);
@@ -73,8 +70,8 @@ function deleteFavJoke(id) {
   if (favEl) {
     favEl.remove();
   }
-  updateLocalStorage(); 
-};
+  updateLocalStorage();
+}
 
 // Fetches joke when new joke button is clicked
 async function logJSONData() {
@@ -124,7 +121,6 @@ function init() {
 
 init();
 
-
 // Button Event Listeners
 jokeBtn.addEventListener("click", logJSONData);
 clear.addEventListener("click", clearData);
@@ -134,36 +130,73 @@ like.addEventListener("click", likeJoke);
 copy.addEventListener("click", copyJoke);
 
 
-const modal = document.querySelector('.main-modal');
-const closeButton = document.querySelectorAll('.modal-close');
+// Alert Modal
 
-    function modalClose() {
-        modal.classList.remove('fadeIn');
-        modal.classList.add('fadeOut');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 500);
-    }
+const modal = document.querySelector(".main-modal");
+const closeButton = document.querySelectorAll(".modal-close");
 
-    function openModal() {
-        modal.classList.remove('fadeOut');
-        modal.classList.add('fadeIn');
-        modal.style.display = 'flex';
-    }
+function modalClose() {
+  modal.classList.remove("fadeIn");
+  modal.classList.add("fadeOut");
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 500);
+}
 
-    for (let i = 0; i < closeButton.length; i++) {
+function openModal() {
+  modal.classList.remove("fadeOut");
+  modal.classList.add("fadeIn");
+  modal.style.display = "flex";
+}
 
-        const elements = closeButton[i];
+for (let i = 0; i < closeButton.length; i++) {
+  const elements = closeButton[i];
 
-        elements.onclick = (e) => modalClose();
+  elements.onclick = (e) => modalClose();
 
-        modal.style.display = 'none';
+  modal.style.display = "none";
 
-        window.onclick = function (event) {
-            if (event.target == modal) modalClose();
-        }
-    }
+  window.onclick = function (event) {
+    if (event.target == modal) modalClose();
+  };
+}
 
-    const openBtn = document.getElementById('open-modal');
 
-    openBtn.addEventListener('click', openModal);
+
+
+
+
+// About Modal
+
+const aboutModal = document.querySelector(".about-modal");
+const aboutCloseButton = document.querySelectorAll(".about-modal-close");
+
+function aboutModalClose() {
+  aboutModal.classList.remove("fadeIn");
+  aboutModal.classList.add("fadeOut");
+  setTimeout(() => {
+    aboutModal.style.display = "none";
+  }, 500);
+}
+
+function aboutOpenModal() {
+  aboutModal.classList.remove("fadeOut");
+  aboutModal.classList.add("fadeIn");
+  aboutModal.style.display = "flex";
+}
+
+for (let i = 0; i < aboutCloseButton.length; i++) {
+  const elements = aboutCloseButton[i];
+
+  elements.onclick = (e) => aboutModalClose();
+
+  aboutModal.style.display = "none";
+
+  window.onclick = function (event) {
+    if (event.target == aboutModal) aboutModalClose();
+  };
+}
+
+const aboutBtn = document.getElementById('about');
+
+aboutBtn.addEventListener('click', aboutOpenModal);
