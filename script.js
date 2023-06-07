@@ -99,7 +99,7 @@ function clearData() {
 
 // show favourites section
 function showFav() {
-  favorites.classList.remove("hidden");
+  favorites.classList.toggle("hidden");
   joke.classList.add("hidden");
   clear.classList.add("hidden");
   like.classList.add("hidden");
